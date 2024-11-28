@@ -6,7 +6,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './account/account.component';
 import { SigninComponent } from './signin/signin.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,

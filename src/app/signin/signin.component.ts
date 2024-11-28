@@ -23,9 +23,9 @@ export class SigninComponent {
     this.userService.signin(this.credentials).subscribe({
         next: (response) => { // Define the expected shape of 'response'
           alert('Signin successful!');
-          console.log('response', response);
-          console.log('token', response.user);
           localStorage.setItem('token', response.user.token); // Save JWT token
+          localStorage.setItem('user_type', response.user.user_type); // Save JWT token
+          console.log(response.user);
           this.router.navigate(['/dashboard']); // Navigate to products page
           //this.router.navigateByUrl(`${API_URL}/dashboard`);
         },
