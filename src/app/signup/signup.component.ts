@@ -6,6 +6,8 @@ import { AccountComponent } from '../account/account.component';
 
 import { UserService } from '../user.service';
 import {User} from '../models/user.model';
+import { Router } from '@angular/router';
+import {API_URL} from '../env';
 
 
 @Component({
@@ -25,11 +27,15 @@ export class SignupComponent {
     email_id: '',
     user_type: 'customer', // Default value
   }
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private router: Router) {}
 
     onSubmit() {
       this.userService.signup(this.user).subscribe({
-        next: (response) => alert('Signup successful!'),
+        next: (response) => {
+          alert('Signup successful!');
+          this.router.navigate(['/dashboard']); // Navigate to products page
+
+        },
         error: (error) => alert('Error during signup: ' + error.message),
       });
     }
