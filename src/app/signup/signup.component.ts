@@ -21,7 +21,6 @@ export class SignupComponent {
   user: User = {
     user_name: '',
     password: '', // New password field
-    join_date: '',
     membership: 'regular', // Default value
     contact_number: undefined,
     email_id: '',
@@ -33,6 +32,10 @@ export class SignupComponent {
       this.userService.signup(this.user).subscribe({
         next: (response) => {
           alert('Signup successful!');
+          console.log("signup");
+          console.log(response);
+          localStorage.setItem('token', response.user.token); // Save JWT token
+          localStorage.setItem('user_type', response.user.user_type); // Save JWT token
           this.router.navigate(['/dashboard']); // Navigate to products page
 
         },

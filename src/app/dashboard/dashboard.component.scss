@@ -63,3 +63,13 @@ $background-color: #f4f4f4;
       margin: 0.5rem 0;
     }
   }
+
+  .btn {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }

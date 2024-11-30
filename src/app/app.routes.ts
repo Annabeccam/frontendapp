@@ -10,7 +10,11 @@ export const routes: Routes = [
   { path: '', component: FrontpageComponent }, // Default route
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent }, // Sign-in/Sign-up route
-  { path: 'dashboard', component: DashboardComponent }, // Home route after login
-  { path: 'womensclothes', component: WomensclothesComponent }, // Home route after login  
+  { path: 'dashboard', 
+  component: DashboardComponent,
+  children: [
+    { path: 'womenclothes', component: WomensclothesComponent }, // Child route
+  ], },
+  //{ path: 'dashboard', component: DashboardComponent }, // Home route after login
   { path: '**', redirectTo: 'signin' }, // Wildcard route (fallback)  
 ];

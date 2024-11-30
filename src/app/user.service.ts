@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {API_URL} from './env';
 import { User } from './models/user.model'; // Import User model
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -19,6 +20,13 @@ export class UserService {
 
   signin(credentials: { email_id: string; password: string }): Observable<any> {
     return this.http.post(`${API_URL}/signin`, credentials);
+  }
+
+  logout(): void {
+    // Clear any stored authentication data (like tokens)
+    localStorage.removeItem('token'); // Assuming token is stored in localStorage
+    localStorage.removeItem('user_type'); // Assuming token is stored in localStorage
+    sessionStorage.clear(); // Optionally clear session storage
   }
 
   getProtectedResource() {
